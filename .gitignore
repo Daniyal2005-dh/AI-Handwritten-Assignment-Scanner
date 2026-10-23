@@ -1,0 +1,19 @@
+# runtime data (uploads, processed pages, SQLite DB)
+data/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# tooling/editor
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# generated evaluation artifacts
+*_EVAL.csv

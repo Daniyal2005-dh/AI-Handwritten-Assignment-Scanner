@@ -1,0 +1,23 @@
+# Core app
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+sqlalchemy>=2.0.30
+pillow>=10.4.0
+numpy>=1.26.0
+opencv-python-headless>=4.10.0
+
+# Export formats
+reportlab>=4.2.0
+python-docx>=1.1.0
+
+# AI handwriting recognition (TrOCR)
+# NOTE: on Windows, `pip install torch` pulls the CPU-only build by default.
+# GPU users with NVIDIA cards can install a CUDA build via the PyTorch index.
+transformers>=4.44.0
+torch>=2.2.0
+
+# Testing
+pytest>=8.0.0
+httpx>=0.27.0
+pypdf>=4.0.0
