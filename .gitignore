@@ -1,3 +1,6 @@
+# local build toolchain (portable JDK for the Android build)
+tools/
+
 # runtime data (uploads, processed pages, SQLite DB)
 data/
 

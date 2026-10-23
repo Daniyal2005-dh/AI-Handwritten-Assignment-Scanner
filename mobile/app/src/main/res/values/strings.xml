@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Assignment Scanner</string>
+    <string name="choose_pages">Choose page photos</string>
+    <string name="cant_reach">Can\'t reach the scanner server</string>
+    <string name="retry">Retry</string>
+    <string name="change_server">Change server</string>
+    <string name="server_hint">HF Space by default. Point at your laptop in dev: http://10.0.2.2:8000 (emulator) or http://&lt;lan-ip&gt;:8000 (phone).</string>
+    <string name="save">Save</string>
+    <string name="saved">Server saved</string>
+    <string name="invalid_url">URL must start with http:// or https://</string>
+    <string name="menu_servers">Server settings</string>
+</resources>

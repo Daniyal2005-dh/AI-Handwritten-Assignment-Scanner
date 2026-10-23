@@ -106,6 +106,24 @@ the searchable PDF keeps per-line alignment of the recognition layer.
    each recognised line (selectable/searchable, still visually original).
 3. **Editable** — DOCX with detected headings and paragraphs, or plain TXT.
 
+## Android app (Kotlin)
+
+`mobile/` contains a Kotlin client that wraps the web app for Android:
+
+* saves you from typing URLs — the deployed HF Space is set as default
+* **photo picking** via the system picker (multi-select JPEG/PNG, camera apps included)
+* pull-to-refresh, back-gesture navigation, offline screen with Retry
+* configurable target: run locally (`http://10.0.2.2:8000` on the emulator or
+  `http://<laptop-ip>:8000` from your phone) or on the cloud server
+
+Build (requires JDK 17 + Android SDK):
+
+```powershell
+cd mobile
+.\gradlew.bat assembleDebug      # APK at app/build/outputs/apk/debug/app-debug.apk
+.\gradlew.bat assembleRelease    # signed-free release build
+```
+
 ## Evaluation (CER / WER)
 
 ```powershell
@@ -136,8 +154,9 @@ backend/
   services/recognition.py    mock + TrOCR providers behind one interface
   services/pipeline.py upload → enhance → segment → recognise → persist
   services/exports.py  original PDF / searchable PDF / DOCX / TXT builders
-frontend/              index.html + app.js + styles.css (no build step)
-scripts/               sample page generator and CER/WER evaluation
+frontend/              PWA: index.html + app.js + styles.css (no build step)
+mobile/                Kotlin Android client (WebView host of the PWA)
+scripts/               sample-page generator, CER/WER evaluation, HF Space deployer
 tests/                 pytest: pipeline units + full API flow (mock mode)
 ```
 
