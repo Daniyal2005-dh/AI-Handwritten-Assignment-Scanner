@@ -10,4 +10,6 @@
     <string name="saved">Server saved</string>
     <string name="invalid_url">URL must start with http:// or https://</string>
     <string name="menu_servers">Server settings</string>
+    <string name="err_404">Server responded 404 (Not Found) - the cloud Space is probably not deployed yet. Deploy it once with scripts/deploy_hf.py, or press Change Server and use your laptop: http://192.168.100.11:8000 (same Wi-Fi).</string>
+    <string name="err_http">Server error - check the server URL or try again.</string>
 </resources>

@@ -10,6 +10,7 @@ import android.view.View
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
@@ -111,12 +112,21 @@ class MainActivity : AppCompatActivity() {
                 error: android.webkit.WebResourceError?
             ) {
                 if (request?.isForMainFrame == true) {
-                    lastErrorDetail = error?.description?.toString()
-                        ?: getString(R.string.server_hint)
-                    runOnUiThread {
-                        errorDetail.text = lastErrorDetail
-                        errorPanel.visibility = View.VISIBLE
-                    }
+                    showError(error?.description?.toString() ?: getString(R.string.server_hint))
+                }
+            }
+
+            override fun onReceivedHttpError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                errorResponse: WebResourceResponse?
+            ) {
+                val code = errorResponse?.statusCode ?: 0
+                if (request?.isForMainFrame == true) {
+                    showError(
+                        if (code == 404) getString(R.string.err_404)
+                        else "${getString(R.string.err_http)} (HTTP $code)"
+                    )
                 }
             }
         }
@@ -180,6 +190,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var lastErrorDetail: String? = null
+
+    private fun showError(message: String) {
+        lastErrorDetail = message
+        runOnUiThread {
+            errorDetail.text = message
+            errorPanel.visibility = View.VISIBLE
+        }
+    }
 
     fun loadServer() {
         errorPanel.visibility = View.GONE
