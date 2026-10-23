@@ -17,7 +17,7 @@ def make_icon(size: int, maskable: bool = False) -> Image.Image:
     # rounded gradient square
     scale = size / 512
     radius = int(90 * scale) if not maskable else 0
-    top, bottom = (79, 70, 229), (139, 92, 246)
+    top, bottom = (62, 125, 79), (125, 185, 92)  # garden green gradient
     grad = Image.new("RGB", (size, size))
     for y in range(size):
         t = y / size

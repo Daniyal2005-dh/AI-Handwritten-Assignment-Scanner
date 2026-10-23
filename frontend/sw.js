@@ -1,6 +1,6 @@
 /* Service worker: app-shell cache + offline fallback (API traffic never cached). */
 
-const CACHE = "scanner-shell-v1";
+const CACHE = "scanner-shell-v2";
 const SHELL = [
   "/",
   "/index.html",

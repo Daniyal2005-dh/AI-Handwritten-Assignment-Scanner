@@ -4,24 +4,24 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
 
-    <!-- page sheet -->
+    <!-- paper sheet (beige) -->
     <path
-        android:fillColor="#FFFFFF"
+        android:fillColor="#F7F3E6"
         android:pathData="M30,22 L64,22 L74,32 L74,86 L30,86 Z" />
     <path
-        android:fillColor="#C7CBFF"
+        android:fillColor="#DCE9D4"
         android:pathData="M64,22 L74,32 L64,32 Z" />
 
-    <!-- text lines -->
-    <path android:fillColor="#B9BEFF" android:pathData="M36,42 h30 v2.5 h-30 Z" />
-    <path android:fillColor="#B9BEFF" android:pathData="M36,50 h30 v2.5 h-30 Z" />
-    <path android:fillColor="#B9BEFF" android:pathData="M36,58 h22 v2.5 h-22 Z" />
+    <!-- text lines (soft green) -->
+    <path android:fillColor="#A9CFA3" android:pathData="M36,42 h30 v2.5 h-30 Z" />
+    <path android:fillColor="#A9CFA3" android:pathData="M36,50 h30 v2.5 h-30 Z" />
+    <path android:fillColor="#A9CFA3" android:pathData="M36,58 h22 v2.5 h-22 Z" />
 
-    <!-- pen -->
+    <!-- pen (deep green) -->
     <path
-        android:fillColor="#312E81"
+        android:fillColor="#23502F"
         android:pathData="M64.5,60 L74,69.5 L52,86 L44,86 L44,80.5 Z" />
     <path
-        android:fillColor="#818CF8"
+        android:fillColor="#8CC79A"
         android:pathData="M72,58.5 L78,64.5 L74,69.5 L64.5,60 Z" />
 </vector>

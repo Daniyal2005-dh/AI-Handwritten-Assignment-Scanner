@@ -36,7 +36,7 @@ function applyTheme(theme) {
       ? '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2m0 14.6v2.2M2.5 12h2.2m14.6 0h2.2M5 5l1.6 1.6M17.4 17.4 19 19M19 5l-1.6 1.6M6.6 17.4 5 19"/>'
       : '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = theme === "dark" ? "#0e131e" : "#4f46e5";
+  if (meta) meta.content = theme === "dark" ? "#121812" : "#f3eee1";
 }
 applyTheme(localStorage.getItem("scanner-theme") ||
   (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));

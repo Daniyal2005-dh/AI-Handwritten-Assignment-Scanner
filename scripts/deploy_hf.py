@@ -22,8 +22,8 @@ HF_FRONTMATTER = """\
 ---
 title: AI Assignment Scanner
 emoji: \U0001f58b\ufe0f
-colorFrom: indigo
-colorTo: purple
+colorFrom: green
+colorTo: lime
 sdk: docker
 app_port: 7860
 pinned: true
