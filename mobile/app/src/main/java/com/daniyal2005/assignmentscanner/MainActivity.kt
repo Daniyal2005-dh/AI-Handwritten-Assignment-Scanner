@@ -220,6 +220,11 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.invalid_url, Toast.LENGTH_LONG).show()
                 }
             }
+            .setNeutralButton(R.string.use_default) { _, _ ->
+                prefs.edit().remove(KEY_SERVER).apply()
+                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
+                loadServer()
+            }
             .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
