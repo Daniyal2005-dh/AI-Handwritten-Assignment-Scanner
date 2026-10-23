@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             domStorageEnabled = true
             loadWithOverviewMode = true
             useWideViewPort = true
-            supportZoom = true // pinch zoom on dense assignment pages
+            setSupportZoom(true) // pinch zoom on dense assignment pages
         }
         webView.setBackgroundColor(getColor(R.color.page_bg))
 
