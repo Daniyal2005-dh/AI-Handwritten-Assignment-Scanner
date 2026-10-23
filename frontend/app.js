@@ -5,6 +5,36 @@ const statusPill = document.getElementById("status-pill");
 const footerMeta = document.getElementById("footer-meta");
 
 let statusInfo = null;
+let deferredInstallPrompt = null;
+
+/* ------------------------------------------------------------------ */
+/* PWA: service worker + install button                                */
+
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  navigator.serviceWorker.register("/sw.js").catch(() => { /* Service worker is optional */ });
+}
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById("install-btn");
+  if (btn) btn.style.display = "inline-flex";
+});
+
+document.getElementById("install-btn").onclick = async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  const choice = await deferredInstallPrompt.userChoice;
+  if (choice.outcome === "accepted") {
+    document.getElementById("install-btn").style.display = "none";
+    toast("App installed — find it on your home screen.");
+  }
+  deferredInstallPrompt = null;
+};
+
+window.addEventListener("appinstalled", () => {
+  document.getElementById("install-btn").style.display = "none";
+});
 
 /* ------------------------------------------------------------------ */
 /* helpers                                                             */

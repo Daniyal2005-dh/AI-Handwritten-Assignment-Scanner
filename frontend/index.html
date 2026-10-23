@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Assignment Scanner</title>
+  <meta name="description" content="Convert photos of handwritten assignments into editable text, searchable PDFs and DOCX." />
+  <meta name="theme-color" content="#4f46e5" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Scanner" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="icon" href="/icons/icon-192.png" type="image/png" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -12,7 +19,10 @@
       <span class="brand-badge">AI</span>
       Handwritten Assignment Scanner
     </a>
-    <span id="status-pill" class="pill" title="Recognition provider">…</span>
+    <span style="display:flex;align-items:center;gap:10px">
+      <button id="install-btn" class="small ghost" style="display:none">Install app</button>
+      <span id="status-pill" class="pill" title="Recognition provider">…</span>
+    </span>
   </header>
 
   <main id="view" class="container"></main>

@@ -27,6 +27,32 @@ Open **http://localhost:8000** in your browser, create an assignment,
 upload page photos, and wait for the processing badges to turn green.
 One-line alternative on any OS: `./run.sh` or `run.bat`.
 
+## Deploy (cloud)
+
+```powershell
+# first run only
+.venv\Scripts\pip install huggingface_hub
+# creates daniyal2005-dh/AI-Assignment-Scanner Space, pushes code,
+# sets SCANNER_RECOGNIZER=trocr, and prints the live URL
+.venv\Scripts\python scripts\deploy_hf.py
+```
+
+The script logs you in through the browser once. First build takes a few
+minutes (CPU-torch Docker image); afterwards every `scripts/deploy_hf.py`
+run updates the Space. Files served publicly run the **real TrOCR model**.
+
+## Install as an app (PWA)
+
+The web app is a Progressive Web App:
+
+* **Android/Chrome**: open the site → "Install app" (button appears after
+  first load, or ⋮ menu → *Add to Home screen*).
+* **Windows/Edge**: address-bar install icon → *Install App as*.
+* **iOS/Safari**: Share → *Add to Home Screen*.
+
+Installed, it launches standalone (own window, app icon) and keeps working
+with cached shell + offline notice; assignments always require the server.
+
 ### Switch on real recognition (TrOCR)
 
 ```powershell
