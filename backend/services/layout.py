@@ -18,7 +18,7 @@ def binarise_ink(gray: np.ndarray) -> np.ndarray:
     """White-on-black ink mask: 255 where writing lies, 0 on paper."""
     blurred = cv2.GaussianBlur(gray, (3, 3), 0)
     return cv2.adaptiveThreshold(
-        blurred, 255, cv2.ADAPTIVE_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 31, 15
+        blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 31, 15
     )
 
 

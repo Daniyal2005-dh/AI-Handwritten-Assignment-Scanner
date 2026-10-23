@@ -27,12 +27,16 @@ class PreprocessResult:
 
 
 def order_corners(pts: np.ndarray) -> np.ndarray:
-    """Return 4 points ordered as top-left, top-right, bottom-right, bottom-left."""
+    """Return 4 points ordered as top-left, top-right, bottom-right, bottom-left.
+
+    tl minimises x+y, br maximises it; tr maximises x-y (large x, small y),
+    bl minimises x-y (small x, large y).
+    """
     pts = np.asarray(pts, dtype=np.float32).reshape(4, 2)
     s = pts.sum(axis=1)
     d = pts[:, 0] - pts[:, 1]
     tl, br = pts[np.argmin(s)], pts[np.argmax(s)]
-    tr, bl = pts[np.argmin(d)], pts[np.argmax(d)]
+    tr, bl = pts[np.argmax(d)], pts[np.argmin(d)]
     return np.array([tl, tr, br, bl], dtype=np.float32)
 
 

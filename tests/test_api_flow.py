@@ -45,9 +45,13 @@ def test_full_assignment_flow(client):
     assert page["mean_confidence"] is not None
 
     # --- images ----------------------------------------------------------
-    for variant in ("original", "processed", "boxes"):
-        res = client.get(f"/api/pages/{page_id}/image?variant={variant}&boxes=1")
-        assert res.status_code == 200
+    for variant, url in (
+        ("original", f"/api/pages/{page_id}/image?variant=original"),
+        ("processed", f"/api/pages/{page_id}/image?variant=processed"),
+        ("processed+boxes", f"/api/pages/{page_id}/image?variant=processed&boxes=1"),
+    ):
+        res = client.get(url)
+        assert res.status_code == 200, url
         assert res.headers["content-type"] == "image/png"
 
     # --- text correction ---------------------------------------------------

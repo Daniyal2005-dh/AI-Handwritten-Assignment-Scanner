@@ -113,7 +113,8 @@ def render_code_page(txt: str, rng: random.Random) -> Image.Image:
     gx = np.linspace(1.0, 0.70, w)[None, :]
     gy = np.linspace(1.0, 0.88, h)[:, None]
     arr *= np.minimum(gx, gy)
-    arr += rng.gauss(0, 5.0, arr.shape)
+    noise = np.random.default_rng(rng.randint(0, 2**32)).normal(0, 5.0, arr.shape)
+    arr += noise
     photo = np.clip(arr, 0, 255).astype(np.uint8)
 
     return Image.fromarray(photo).convert("L")

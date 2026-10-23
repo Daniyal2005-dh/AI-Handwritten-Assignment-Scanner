@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -30,10 +32,18 @@ def fix_stuck_pages() -> None:
 
 
 def create_app() -> FastAPI:
+    @asynccontextmanager
+    async def lifespan(_: FastAPI):
+        settings.ensure_dirs()
+        init_db()
+        fix_stuck_pages()
+        yield
+
     app = FastAPI(
         title="AI Handwritten Assignment Scanner",
         description="Photo → enhanced page → text lines → editable text → PDF/DOCX exports",
         version="1.0.0",
+        lifespan=lifespan,
     )
 
     app.add_middleware(
@@ -63,12 +73,6 @@ def create_app() -> FastAPI:
                 else "TrOCR model loaded."
             ),
         }
-
-    @app.on_event("startup")
-    def on_startup() -> None:
-        settings.ensure_dirs()
-        init_db()
-        fix_stuck_pages()
 
     # Static frontend last, so API routes and /docs win.
     app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

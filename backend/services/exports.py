@@ -40,6 +40,7 @@ def _pdf_bytes(assignment, pages, draw_text_layer: bool) -> bytes:
     buffer = io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
     margin = 10 * mm
+    from reportlab.lib.utils import ImageReader
 
     for page in pages:
         img = _page_image(page.image_array)
@@ -52,7 +53,7 @@ def _pdf_bytes(assignment, pages, draw_text_layer: bool) -> bytes:
         png = io.BytesIO()
         Image.fromarray(img).save(png, format="PNG")
         png.seek(0)
-        c.drawImage(png, x, y, w, h)
+        c.drawImage(ImageReader(png), x, y, w, h)
 
         if draw_text_layer and page.lines():
             c.setFillColorRGB(0, 0, 0)
